@@ -166,7 +166,7 @@ def main():
         if not is_interactive and not has_force_token:
             print("[REJECT 物理拦截] accept 命令禁止在非交互式/自动化子进程中执行！请在终端手动输入或在 Web 看板携带主控 Token 验收。")
             _sys.exit(1)
-        if is_interactive:
+        if is_interactive and not has_force_token:
             print(f"[SECURITY]  确认执行人类最终验收？任务 {args.task_id} 将永久流转至【已验收】终态 (不可逆)。")
             try:
                 confirm = input("请输入 y 确认验收 (其他任意键取消): ").strip().lower()
@@ -219,7 +219,7 @@ def main():
         if not is_interactive and not has_force_token:
             print("[REJECT 物理拦截] accept-all 命令禁止在非交互式/自动化子进程中执行！请在终端手动输入或在 Web 看板携带主控 Token 验收。")
             _sys.exit(1)
-        if is_interactive:
+        if is_interactive and not has_force_token:
             print(f"[SECURITY]  确认批量执行人类最终验收？共 {len(candidates)} 个任务将永久流转至【已验收】终态 (不可逆)。")
             try:
                 confirm = input("请输入 y 确认批量验收 (其他任意键取消): ").strip().lower()
