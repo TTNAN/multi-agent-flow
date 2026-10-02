@@ -126,6 +126,7 @@ mkdir -p .yy-flow/skill && curl -L https://github.com/YuanYii/multi-agent-flow/a
 | **人类终态验收** | `python3 scripts/cli.py task accept ...` | `scripts/quick_task.py accept` | `--task-id T00xx`（**人类用户专属**，严禁 Agent 越权自签） |
 | **启动看板** | `python3 scripts/cli.py kanban` | `scripts/start_kanban_server.py` | 默认启动于 `http://127.0.0.1:32886/`，打印安全 Token |
 | **健康度巡检** | `python3 scripts/cli.py status` | `scripts/heartbeat.py` | 输出大盘健康度、阻塞卡片与效能统计指标 |
+| **技术栈同步/画像重算** | - | `scripts/update_agent_tech_stacks.py` | `--force-recalc` 强制重算专家技术能力画像并刷新导出 Subagent，解决技术栈迁移后画像陈旧问题 |
 | **连续性校验** | `python3 scripts/cli.py ccp ...` | `scripts/cli.py ccp` | 校验 Agent 上下文交接完整性与前置依赖产物 |
 | **智能增量测试** | `python3 scripts/cli.py test` | `scripts/run_tests.py` | 自动探测 Git 改动，仅测相关单测 (秒级)，文档变更自动豁免，`--all` 全量回归 |
 
