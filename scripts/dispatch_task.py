@@ -325,6 +325,11 @@ def dispatch_task(
         }
     }
 
+    if role_code == "QA":
+        task_action_rule = "1. 测试执行规范：严禁执行裸 pytest 全量测试！必须优先执行 python3 scripts/cli.py test（智能增量测试）或针对本次变更模块执行定向回归；"
+    else:
+        task_action_rule = "1. 必须在独立会话中编写实体源码并执行针对性单元测试（保持单测全部通过）；"
+
     subagent_prompt = f"""【YY-Flow 专家工单派发指令】
 
 你已被指派承接研发工单: [{task_id}] {task_name}
@@ -343,7 +348,7 @@ def dispatch_task(
 {chr(10).join(['- ' + d for d in related_docs]) if related_docs else '- 遵循工作区既有架构与规范'}
 
 【硬性退出契约与防错铁律】:
-1. 必须在独立会话中编写实体源码并执行针对性单元测试（保持单测全部通过）；
+{task_action_rule}
 2. 提审前自省 (P5-1): 是否亲见测试通过？每项验收标准是否有代码与日志凭据？
 3. 完工前必须物理执行以下 CLI 推进状态至【{next_status}】(携带专属 --token 凭据):
    `{exit_cli}`
