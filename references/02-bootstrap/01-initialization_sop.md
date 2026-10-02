@@ -39,3 +39,13 @@
 | `@flow-qa` | 章测试 (测试工程师) | 集成测试、边界场景与质量准出 | 完整读写 + run_command | 测试中->已完成 / 测试中->已退回 |
 | `@flow-docs` | 李文通 (文档工程师) | 交付物文档架构治理与规范 | 完整读写 + run_command | 待开始->进行中 / 进行中->已完成 |
 | `@flow-devops` | 吕改特 (运维管理员) | 分支合流、发布构建与 CI 巡检 | 完整读写 + run_command | 待开始->进行中 / 进行中->已完成 |
+
+---
+
+## 三、 技术栈漂移与专家专精能力强制重算 (`--force-recalc`)
+
+当项目经历技术栈重大改造或重构升级（例如从 Python 转向 Java、引入全栈框架或升级单测框架）时，为避免读取旧的已定版能力缓存，可通过以下命令强制重新推导与回填：
+- `python3 scripts/update_agent_tech_stacks.py --force-recalc`：清空旧画像缓存，重新推导 6 大专家专精技术能力并联动重新导出 Subagent。
+- `python3 scripts/save_project_architecture.py --force-recalc`：在保存架构配置时强制忽略旧缓存并全量重新推导。
+- `python3 scripts/auto_scan_stack.py --merge --force-recalc`：嗅探到新技术后增量合并并强制刷新各角色专精能力。
+- `python3 scripts/update_project_profile.py --force-recalc`：更新运行态工程配置时触发各专家专精能力重新推导与持久化。

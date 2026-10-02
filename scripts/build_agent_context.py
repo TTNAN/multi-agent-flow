@@ -111,6 +111,7 @@ def build_context(role: str, action: str = "general") -> str:
         context_output.append("- 通关：更至 `测试中`，处理人移交 `QA`；")
         context_output.append("- 打回：更至 `已退回`，处理人改回原负责人，备注写入 `DEF-TXXX-N`。")
     elif action == "test":
+        context_output.append("- 测试验证：严禁执行裸 pytest 全量测试！必须优先调用 python3 scripts/cli.py test 自动探测变更并精准测试；")
         context_output.append("- 通关：更至 `已完成`，处理人移交 `PM`，强制写入结束时间；")
         context_output.append("- 打回：更至 `已退回`，处理人改回原负责人。")
     else:
